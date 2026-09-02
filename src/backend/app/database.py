@@ -1,14 +1,39 @@
+import os
+
+from dotenv import load_dotenv
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "postgresql://postgres:Pravallika@localhost:5432/scoutwise_ai"
 
-engine = create_engine(DATABASE_URL)
+# Load environment variables
+load_dotenv()
 
+
+# Get database URL from environment
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL environment variable is not configured."
+    )
+
+
+# Create database engine
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+)
+
+
+# Create database session
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
-    bind=engine
+    bind=engine,
 )
 
+
+# Base class for SQLAlchemy models
 Base = declarative_base()

@@ -1,0 +1,48 @@
+{
+  "name": "scout-wise-ai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@radix-ui/react-slot": "^1.3.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.26.0",
+    "react": "^19.2.7",
+    "react-circular-progressbar": "^2.2.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.82.0",
+    "react-intersection-observer": "^10.1.0",
+    "react-router-dom": "^7.18.1",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^10.6.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "5.8",
+    "typescript-eslint": "^8.62.0",
+    "vite": "^5.4.21",
+    "vite-tsconfig-paths": "^6.1.1"
+  }
+}

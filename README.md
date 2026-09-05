@@ -6,15 +6,16 @@ ScoutWise AI is a full-stack web application designed to help users evaluate job
 
 ## 🚀 Live Application
 
-**Frontend:**
-https://scoutwise-ai-frontend.onrender.com
+### 🌐 Live Demo
 
-**Backend API:**
-https://scoutwise-ai.onrender.com
+👉 **[Open ScoutWise AI](https://scoutwise-ai-frontend.onrender.com)**
 
-**API Documentation:**
-https://scoutwise-ai.onrender.com/docs
+Use the live application to register, log in, analyze job postings, upload resumes for ATS matching, and interact with the AI career assistant.
 
+### 🔗 Backend & API
+
+* **Backend API:** https://scoutwise-ai.onrender.com
+* **API Documentation:** https://scoutwise-ai.onrender.com/docs
 ---
 
 ## ✨ Features

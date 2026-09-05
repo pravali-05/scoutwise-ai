@@ -8,7 +8,6 @@ from fastapi import (
     FastAPI,
     File,
     Form,
-    HTTPException,
     UploadFile,
 )
 
@@ -198,9 +197,8 @@ async def ask_ai(
             return {
                 "success": False,
                 "answer": (
-                    "Gemini API key is not configured. "
-                    "Please configure GEMINI_API_KEY "
-                    "in the backend .env file."
+                    "Gemini AI service is currently unavailable. "
+                    "Please try again later."
                 ),
             }
 
@@ -295,6 +293,9 @@ User Question:
 
     except Exception as error:
 
+        # Keep technical details in backend logs
+        # but do not expose them to the user.
+
         print("=" * 60)
         print("ASK AI ERROR:")
         print(str(error))
@@ -306,7 +307,7 @@ User Question:
                 "Sorry, I could not process "
                 "your question right now."
             ),
-            "error": str(error),
+            "error": "AI service temporarily unavailable.",
         }
 
 
@@ -832,9 +833,11 @@ Do not claim that a job is definitely genuine or definitely
 fraudulent. Explain that the result is an assessment.
 """
 
+
                 ai_response = ai_model.generate_content(
                     ai_prompt
                 )
+
 
                 generated_text = getattr(
                     ai_response,
@@ -842,9 +845,11 @@ fraudulent. Explain that the result is an assessment.
                     None
                 )
 
+
                 if generated_text:
 
                     ai_explanation = generated_text.strip()
+
 
             except Exception as ai_error:
 
@@ -1034,20 +1039,20 @@ fraudulent. Explain that the result is an assessment.
         }
 
 
+    # =====================================================
+    # PRODUCTION ERROR HANDLING
+    # =====================================================
+
     except Exception as error:
 
         db.rollback()
 
+        # Technical error is kept in backend logs
+        # and is NOT exposed to the user.
+
         print("=" * 60)
-
-        print(
-            "ANALYZE JOB ERROR:"
-        )
-
-        print(
-            str(error)
-        )
-
+        print("ANALYZE JOB ERROR:")
+        print(str(error))
         print("=" * 60)
 
 
@@ -1057,7 +1062,10 @@ fraudulent. Explain that the result is an assessment.
 
             "error": "Job analysis failed",
 
-            "message": str(error),
+            "message": (
+                "An internal error occurred while "
+                "analyzing the job."
+            ),
 
         }
 

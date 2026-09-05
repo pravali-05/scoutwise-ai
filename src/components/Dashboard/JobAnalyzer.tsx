@@ -287,8 +287,7 @@ export default function JobAnalyzer() {
       // =================================================
 
       const response =
-        await fetch(
-          "http://127.0.0.1:8000/analyze-job",
+        await fetch("https://scoutwise-ai.onrender.com/analyze-job",
           {
             method: "POST",
 

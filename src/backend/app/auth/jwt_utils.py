@@ -4,10 +4,12 @@ from datetime import datetime, timedelta, timezone
 import jwt
 
 
-SECRET_KEY = os.getenv(
-    "JWT_SECRET_KEY",
-    "scoutwise-ai-development-secret-change-this",
-)
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+
+if not SECRET_KEY:
+    raise RuntimeError(
+        "JWT_SECRET_KEY environment variable is not configured."
+    )
 
 ALGORITHM = "HS256"
 
